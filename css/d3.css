@@ -1,0 +1,25 @@
+/* D3 Styles 
+  svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .curve, .line {
+    fill: none;
+    stroke-width: 1px;
+  }
+  .curve {
+    stroke: red;
+    stroke-width: 3px;
+  }
+  .control {
+    fill: #ccc;
+    stroke: #000;
+    stroke-width: .5px;
+  }
+  .t, .controltext {
+    font-family: "Yanone Kaffeesatz";
+    font-weight: 400;
+    font-size: 1em;
+  }
+  */
