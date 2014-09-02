@@ -149,7 +149,7 @@
                  .enter()
                  .append("text")
                  .text( function(d){
-                     return String.fromCharCode(d.keyCode);
+                   return d.keystroke;
                     }
                   )
                  .attr("x", function(d) {

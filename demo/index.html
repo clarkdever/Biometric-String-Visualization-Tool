@@ -12,16 +12,16 @@
     <link href="css/default.css" rel="stylesheet" type='text/css'>
   </head>
   <!-- Create our App and Controller -->
-  <body ng-app="myApp" ng-controller="keystrokeController">
+  <body ng-app="myApp" ng-controller="keystrokeController" class="containter ng-cloak">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
        <h1>Muscle Memory Biometric Visualization</h1>
        <!-- Input Area -->
       <h2>{{prompt}}</h2>
         <form>
+        <!-- ng-keydown="onKeyDown($event)" -->
           <input type="text"
-              ng-keypress="onKeyPress($event)"
-              ng-keydown="onKeyDown($event)"
+              ng-keypress="onKeyDown($event)"
               ng-keyup="onKeyUp($event)"
               ng-model="formInput.characters"
           >
@@ -46,27 +46,18 @@
     <!--Description -->
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <p>If you type a string of characters frequently, you will type them differently than someone else based on your muscle memory. This tool visualizes that difference. The x-axis shows elapsed time between characters, the y-axis and circle diameters show the duration of each keystroke. Each time you type the string, each keystroke is visualized, keystrokes from the same string are the same color.</p>
+        <p>If you type a string of characters frequently, you will type them differently than someone else based on your muscle memory. This tool visualizes that difference. The x-axis shows elapsed time between characters, the y-axis and circle diameters show the duration of each keystroke. Each time you type the string, each keystroke is visualized, keystrokes from the same string are the same color.  
+        </p>
       </div>
     </div>
 
     <!-- JS Libraries -->
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.js"></script>
     <!-- App Specific JS -->
     <script src="scripts/app.js"></script>
     <script src="scripts/services/d3.js"></script>
-    <script src="scripts/directives/keyStrokes.js"></script>
+    <script src="scripts/controllers/keyStrokes.js"></script>
     <script src="scripts/directives/d3Basic.js"></script>
-    <script type="text/javascript">
-      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-    <script type="text/javascript">
-      try {
-        var pageTracker = _gat._getTracker("UA-7892607-5");
-      pageTracker._trackPageview();
-      } catch(err) {}
-    </script>
 
 
   </body>
