@@ -110,15 +110,21 @@ ToDo:   Handle Deleted Keystrokes
       if(lastPress==0){
         startWord = event.timeStamp;
       }
-      keyCode=event.keyCode;
+      keyCode=event.which;
     };    
 
     //Stop the clock on duration and store the keypress for visualization
     $scope.onKeyUp = function (event) {
-      //console.dir(event);
-      //Escape Shift and Enter Keystrokes
+      //Escape Shift, Enter 
       if(event.keyCode !== 13 && event.keyCode !== 16){
-        $scope.recordkeystroke(event)
+        //if it's backspace, pop a character off the array
+        if(event.keyCode == 8) {
+            $scope.keystrokeMetrics[itr].pop();
+        } else {
+          //write the character to the array
+            $scope.recordkeystroke(event)
+        }
+        
       } 
     };
 
