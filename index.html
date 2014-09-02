@@ -12,7 +12,7 @@
     <link href="css/default.css" rel="stylesheet" type='text/css'>
   </head>
   <!-- Create our App and Controller -->
-  <body ng-app="myApp" ng-controller="keystrokeController">
+  <body ng-app="myApp" ng-controller="keystrokeController" class="containter ng-cloak">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
        <h1>Muscle Memory Biometric Visualization</h1>
@@ -46,30 +46,17 @@
     <!--Description -->
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <p>If you type a string of characters frequently, you will type them differently than someone else based on your muscle memory. This tool visualizes that difference. The x-axis shows elapsed time between characters, the y-axis and circle diameters show the duration of each keystroke. Each time you type the string, each keystroke is visualized, keystrokes from the same string are the same color.</p>
-        <p><strong>Known Bugs:</strong> 
-        <ul>
-        <li>If you type too quickly, the character displays in the bubble may be different than what you typed.  This is because javascript only provides you the correct keyCode in the keypress event listener and I used keyup and keydown to capture the duration of each key stroke.  This sometimes creates a race condition and the wrong character is stored in the keystrokeMetrics array.</li>
-        <li>Backspace Characters aren't handled.</li>
-        <li>Editing the input field with the mouse isn't handled.</li>
-        <li>Cross Browser Issues:
-          <ul>
-            <li>Firefox - Doesn't render the letters over the balls.</li>
-            <li>Internet Explorer - Pulls the focus from the input fields when you submit with the enter key.</li>
-          </ul>
-        </li>
-        </ul>
-        If you find anything else, please drop me an <a href="mailto:clarkdever@gmail.com">e-mail</a>.  
+        <p>If you type a string of characters frequently, you will type them differently than someone else based on your muscle memory. This tool visualizes that difference. The x-axis shows elapsed time between characters, the y-axis and circle diameters show the duration of each keystroke. Each time you type the string, each keystroke is visualized, keystrokes from the same string are the same color.  
         </p>
       </div>
     </div>
 
     <!-- JS Libraries -->
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.js"></script>
     <!-- App Specific JS -->
     <script src="scripts/app.js"></script>
     <script src="scripts/services/d3.js"></script>
-    <script src="scripts/directives/keyStrokes.js"></script>
+    <script src="scripts/controllers/keyStrokes.js"></script>
     <script src="scripts/directives/d3Basic.js"></script>
 
 
