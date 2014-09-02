@@ -19,9 +19,9 @@
        <!-- Input Area -->
       <h2>{{prompt}}</h2>
         <form>
+        <!-- ng-keydown="onKeyDown($event)" -->
           <input type="text"
               ng-keypress="onKeyPress($event)"
-              ng-keydown="onKeyDown($event)"
               ng-keyup="onKeyUp($event)"
               ng-model="formInput.characters"
           >

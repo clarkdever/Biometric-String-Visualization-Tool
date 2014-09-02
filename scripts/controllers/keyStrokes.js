@@ -92,6 +92,7 @@ ToDo:   Handle Deleted Keystrokes
         
     }
 
+ /*
     //Start the clock on this keypresses duration
     $scope.onKeyDown = function (event) {
       pressDuration = event.timeStamp;
@@ -101,9 +102,14 @@ ToDo:   Handle Deleted Keystrokes
       }
     };
 
-
+*/
     //Start the clock on this keypresses duration
     $scope.onKeyPress = function (event) {
+      pressDuration = event.timeStamp;
+      //if this is the first letter in the attempt, set our start word time.
+      if(lastPress==0){
+        startWord = event.timeStamp;
+      }
       keyCode=event.keyCode;
     };    
 
@@ -111,7 +117,7 @@ ToDo:   Handle Deleted Keystrokes
     $scope.onKeyUp = function (event) {
       //console.dir(event);
       //Escape Shift and Enter Keystrokes
-      if(!(event.keyCode == 13 || event.keyCode == 16)){
+      if(event.keyCode !== 13 && event.keyCode !== 16){
         $scope.recordkeystroke(event)
       } 
     };
