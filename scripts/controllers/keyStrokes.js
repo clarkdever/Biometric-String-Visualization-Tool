@@ -16,8 +16,6 @@ ToDo:   Handle Deleted Keystrokes
     //store the meta data about each keystroke
     //(time between presses, duration of key press, keyValue)
     $scope.keystrokeMetrics = [[],[]];
-    //Supposedly only keyPress returns a valid keyCode
-    var keyCode;
     //this is a timestamp used as a reference frame
     var lastPress = 0;
     //this is how long a key is depressed
@@ -78,13 +76,14 @@ ToDo:   Handle Deleted Keystrokes
         }
 
         //Is this the first key that's been pressed in this string?
-        //If it is, set its elapsed time to 0 and make it's timestamp the new frame of reference (lastPress)      
+        //If it is, set its elapsed time to 0 and make it's timestamp the new frame of reference (lastPress)
+        //keystroke = the last character in the input string (avoids a race condition that you'd get from accessing keycode on the event listener)      
         if(lastPress==0){
-          $scope.keystrokeMetrics[itr].push({elapsed:1, duration:pressDuration, keyCode:keyCode, attempt:itr});
+          $scope.keystrokeMetrics[itr].push({elapsed:1, duration:pressDuration, keystroke:$scope.formInput.characters.charAt($scope.keystrokeMetrics[itr].length), attempt:itr});
           lastPress = event.timeStamp;
         } else {
           //Else, set its elapsed time based on the difference between now and the last keypress
-          $scope.keystrokeMetrics[itr].push({elapsed:elapsed,  duration:pressDuration, keyCode:keyCode, attempt:itr});
+          $scope.keystrokeMetrics[itr].push({elapsed:elapsed,  duration:pressDuration, keystroke:$scope.formInput.characters.charAt($scope.keystrokeMetrics[itr].length), attempt:itr});
 
           //reset our reference frame
           lastPress = event.timeStamp;
@@ -92,7 +91,7 @@ ToDo:   Handle Deleted Keystrokes
         
     }
 
- /*
+
     //Start the clock on this keypresses duration
     $scope.onKeyDown = function (event) {
       pressDuration = event.timeStamp;
@@ -102,19 +101,9 @@ ToDo:   Handle Deleted Keystrokes
       }
     };
 
-*/
-    //Start the clock on this keypresses duration
-    $scope.onKeyPress = function (event) {
-      pressDuration = event.timeStamp;
-      //if this is the first letter in the attempt, set our start word time.
-      if(lastPress==0){
-        startWord = event.timeStamp;
-      }
-      keyCode=event.which;
-    };    
-
     //Stop the clock on duration and store the keypress for visualization
     $scope.onKeyUp = function (event) {
+
       //Escape Shift, Enter 
       if(event.keyCode !== 13 && event.keyCode !== 16){
         //if it's backspace, pop a character off the array
@@ -122,7 +111,7 @@ ToDo:   Handle Deleted Keystrokes
             $scope.keystrokeMetrics[itr].pop();
         } else {
           //write the character to the array
-            $scope.recordkeystroke(event)
+            $scope.recordkeystroke(event);
         }
         
       } 
