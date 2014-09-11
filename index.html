@@ -1,32 +1,41 @@
 <!doctype html>
+<html>
   <head>
   <!-- Written by Clark Dever - clarkdever@gmail.com -->
   <!-- Created: 20140830 -->
     <meta charset="utf-8">
     <title>Typing Biometric Visualization</title>
-    <meta name="description" content=" Muscle Memory Biometric Vizualization in d3 and Angular">
+    <meta name="description" content="Muscle Memory Biometric Vizualization in d3 and Angular">
     <!-- CSS Libraries -->
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet" type="text/css">
     <!-- App Specific CSS -->
-    <link href="css/default.css" rel="stylesheet" type='text/css'>
+    <link href="css/default.css" rel="stylesheet" type="text/css">
   </head>
   <!-- Create our App and Controller -->
   <body ng-app="myApp" ng-controller="keystrokeController" class="containter ng-cloak">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
        <h1>Muscle Memory Biometric Visualization</h1>
-       <!-- Input Area -->
-      <h2>{{prompt}}</h2>
-        <form>
+
+<!-- Input Area -->
+
+        <form name="form" novalidate>
         <!-- ng-keydown="onKeyDown($event)" -->
-          <input type="text"
+          <div class="form-group">
+	   		<label>{{prompt}}</label> 
+	        <input type="text"
               ng-keypress="onKeyDown($event)"
               ng-keyup="onKeyUp($event)"
               ng-model="formInput.characters"
-          >
-          <button type="submit" ng-click="submission()" class="btn btn-success">Enter</button>
-          <button type="submit" ng-click="resetApp()" class="btn btn-danger">Reset</button>
+              ng-minlength="1" 
+              ng-maxlength="15"
+              class="form-control"
+              required
+          	>          
+          </div>
+	          <button type="submit" ng-click="submission()" class="btn btn-success">Enter</button>
+	          <button type="submit" ng-click="resetApp()" class="btn btn-danger">Reset</button>
         </form>    
       </div>
     </div>
@@ -52,7 +61,7 @@
     </div>
 
     <!-- JS Libraries -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.js"></script>
     <!-- App Specific JS -->
     <script src="scripts/app.js"></script>
     <script src="scripts/services/d3.js"></script>

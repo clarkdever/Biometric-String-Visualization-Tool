@@ -7,8 +7,7 @@
   .controller("keystrokeController", ['$scope', function($scope) {
     
 /*
-ToDo:   Handle Deleted Keystrokes
-        Handle Spaces
+ToDo:  
         Handle Cursor Entry + Delete
         Handle Copy and Pasting
 */
@@ -129,6 +128,7 @@ ToDo:   Handle Deleted Keystrokes
       startWord = 0;
       pressDuration = 0;
       $scope.formInput.characters = "";
+      $scope.form.$setPristine();
       $scope.resetkeystrokeMetrics();
       $scope.setup.maxDuration = 0;
       $scope.setup.maxElapsed = 0;
@@ -154,6 +154,7 @@ ToDo:   Handle Deleted Keystrokes
         $scope.prompt = "Type \"" + $scope.formInput.characters + "\" Again";
         $scope.title = "Visualizing: \"" + $scope.formInput.characters + "\"";
         $scope.formInput.characters = "";
+        $scope.form.$setPristine();
       } 
       //let d3 know it should render
       $scope.setup.update = true;
