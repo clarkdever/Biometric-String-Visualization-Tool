@@ -7,6 +7,7 @@
     .factory('d3', ['$document', '$q', '$rootScope',
       function($document, $q, $rootScope) {
         
+        //create a promise
         var d = $q.defer();
         
         function onScriptLoad() {
@@ -20,7 +21,7 @@
         var scriptTag = $document[0].createElement('script');
         scriptTag.type = 'text/javascript'; 
         scriptTag.async = true;
-        scriptTag.src = '//d3js.org/d3.v3.js';
+        scriptTag.src = 'http://d3js.org/d3.v3.js';
         scriptTag.onreadystatechange = function () {
           if (this.readyState == 'complete') onScriptLoad();
         }

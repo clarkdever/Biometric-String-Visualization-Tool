@@ -14,13 +14,22 @@ h1 {
     font-weight: bold;
     color: #000000;
 }
-h2 {
+label {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     font-style: italic;
     color: #000000;
 }
 
+/* Angular Related Stuff */
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
+}
+
+.form-group input.ng-invalid.ng-dirty {
+    background-color: #FA787E;
+}
+
+.form-group input.ng-valid.ng-dirty {
+    background-color: #78FA89;
 }
