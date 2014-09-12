@@ -4,7 +4,7 @@
   /*Clark Dever (clarkdever@gmail.com) - 20140830*/
   
   angular.module('myApp.directives')
-    .directive('d3Bars', ['d3', function(d3) {
+    .directive('visualization', ['d3', function(d3) {
       return {
         restrict: 'EA',
         scope: {
